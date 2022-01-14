@@ -1,0 +1,17 @@
+= Arch Setup
+
+My Ansible playbook for setting up Arch Linux. Intended to run locally.
+
+Install Git and Ansible:
+
+[shell]
+----
+# pacman -S git ansible
+----
+
+Clone and run playbook:
+[shell]
+----
+# git clone https://github.com/nxblnd/arch-setup
+# ansible-playbook -i localhost arch-setup/main.yaml
+----
