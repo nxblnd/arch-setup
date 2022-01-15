@@ -13,5 +13,5 @@ Clone and run playbook:
 [shell]
 ----
 # git clone https://github.com/nxblnd/arch-setup
-# ansible-playbook -i localhost arch-setup/main.yaml
+# ansible-playbook -i localhost arch-setup/playbook.yml
 ----
