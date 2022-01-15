@@ -1,0 +1,21 @@
+---
+- name: Install pacman-contrib
+  pacman:
+    name: pacman-contrib
+    state: present
+
+- name: Copy paccache hook
+  copy:
+    src: paccache.hook
+    dest: /etc/pacman.d/hooks/paccache.hook
+    mode: 0644
+    owner: root
+    group: root
+
+- name: Copy paccache hook for deleted packages
+  copy:
+    src: paccache_deleted.hook
+    dest: /etc/pacman.d/hooks/paccache_deleted.hook
+    mode: 0644
+    owner: root
+    group: root

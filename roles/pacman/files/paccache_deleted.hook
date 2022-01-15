@@ -1,0 +1,9 @@
+[Trigger]
+Type = Package
+Operation = Remove
+Target = *
+
+[Action]
+Description = Dropping deleted package caches
+When = PostTransaction
+Exec = /usr/bin/paccache -ruk 0

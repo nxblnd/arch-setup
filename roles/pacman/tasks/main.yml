@@ -1,0 +1,10 @@
+---
+- name: Copy pacman config
+  copy:
+    src: pacman.conf
+    dest: /etc/pacman.conf
+    mode: 0644
+    owner: root
+    group: root
+
+- include_tasks: paccache.yml
