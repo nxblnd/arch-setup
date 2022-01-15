@@ -1,5 +1,6 @@
 ---
 - hosts: localhost
+  become: yes
   vars_prompt:
     - name: fullname
       prompt: What is your name?

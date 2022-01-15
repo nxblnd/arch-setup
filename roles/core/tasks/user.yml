@@ -1,4 +1,16 @@
 ---
+- name: Install sudo
+  pacman:
+    name: sudo
+    state: present
+
+- name: Copy sudoers file
+  copy:
+    src: sudoers
+    dest: /etc/sudoers
+    mode: 0440
+    validate: 'visudo -cf %s'
+
 - name: Create user group
   group:
     name: '{{ username }}'
