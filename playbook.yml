@@ -1,6 +1,6 @@
 ---
 - hosts: localhost
-  become: yes
+  become: true
   vars_prompt:
     - name: fullname
       prompt: What is your name?
@@ -14,6 +14,6 @@
       confirm: true
       encrypt: sha512_crypt
   roles:
-    - { role: update, tags: ['base'] }
-    - { role: core, tags: ['base', 'user'] }
-    - { role: ntp, tags: ['base', 'time'] }
+    - update
+    - core
+    - ntp
