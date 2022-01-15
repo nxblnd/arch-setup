@@ -13,6 +13,9 @@
       private: true
       confirm: true
       encrypt: sha512_crypt
+    - name: hostname
+      prompt: What is this machine hostname?
+      private: false
   roles:
     - update
     - core
