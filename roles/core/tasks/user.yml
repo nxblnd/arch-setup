@@ -21,5 +21,6 @@
     name: '{{ username }}'
     comment: '{{ fullname }}'
     password: '{{ password }}'
-    groups: wheel, audio, disk, input, storage, '{{ username }}'
+    groups: wheel, audio, disk, input, storage
+    append: true
     create_home: true
