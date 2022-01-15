@@ -1,0 +1,5 @@
+- name: Enable systemd-timesyncd
+  systemd:
+    name: systemd-timesyncd
+    enabled: true
+    state: started

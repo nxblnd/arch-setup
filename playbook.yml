@@ -1,0 +1,6 @@
+---
+- hosts: localhost
+  become: true
+  roles:
+    - { role: update, tags: ['base'] }
+    - { role: ntp, tags: ['time', 'utilities', 'base'] }
