@@ -9,6 +9,8 @@
     src: sudoers
     dest: /etc/sudoers
     mode: 0440
+    owner: root
+    group: root
     validate: 'visudo -cf %s'
 
 - name: Create user group
