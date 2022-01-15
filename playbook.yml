@@ -1,6 +1,18 @@
 ---
 - hosts: localhost
-  become: true
+  vars_prompt:
+    - name: fullname
+      prompt: What is your name?
+      private: false
+    - name: username
+      prompt: What is your username?
+      private: false
+    - name: password
+      prompt: What is your password?
+      private: true
+      confirm: true
+      encrypt: sha512_crypt
   roles:
     - { role: update, tags: ['base'] }
-    - { role: ntp, tags: ['time', 'utilities', 'base'] }
+    - { role: core, tags: ['base', 'user'] }
+    - { role: ntp, tags: ['base', 'time'] }
