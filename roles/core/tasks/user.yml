@@ -1,7 +1,13 @@
 ---
+- name: Create user group
+  group:
+    name: '{{ username }}'
+    state: present
+
 - name: Create user
   user:
     name: '{{ username }}'
     comment: '{{ fullname }}'
     password: '{{ password }}'
+    groups: wheel, audio, disk, input, storage, '{{ username }}'
     create_home: true
