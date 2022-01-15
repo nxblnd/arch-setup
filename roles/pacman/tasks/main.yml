@@ -8,3 +8,4 @@
     group: root
 
 - include_tasks: paccache.yml
+- include_tasks: yay.yml
