@@ -17,7 +17,6 @@
       prompt: What is this machine hostname?
       private: false
   roles:
-    - update
     - pacman
     - core
     - ntp

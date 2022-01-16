@@ -1,6 +1,0 @@
----
-- name: System upgrade
-  become: true
-  pacman:
-    upgrade: true
-    update_cache: true
