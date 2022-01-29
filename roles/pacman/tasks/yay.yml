@@ -10,6 +10,8 @@
     dest: /tmp/yay
     version: master
   become_user: '{{ username }}'
+  vars:
+    ansible_become_pass: '{{ password }}'
 
 - name: Build yay
   command:
@@ -17,6 +19,8 @@
     cmd: 'makepkg --syncdeps --noconfirm'
     creates: yay-*.pkg.tar.zst
   become_user: '{{ username }}'
+  vars:
+    ansible_become_pass: '{{ password }}'
 
 - name: Install yay
   pacman:
