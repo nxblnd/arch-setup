@@ -13,16 +13,11 @@
   vars:
     ansible_become_pass: '{{ password }}'
 
-- name: Build yay
+- name: Build and install yay
   command:
     chdir: /tmp/yay
-    cmd: 'makepkg --syncdeps --noconfirm'
+    cmd: 'makepkg --syncdeps --install --noconfirm'
     creates: yay-*.pkg.tar.zst
   become_user: '{{ username }}'
   vars:
     ansible_become_pass: '{{ password }}'
-
-- name: Install yay
-  pacman:
-    name: /tmp/yay/yay-*.pkg.tar.zst
-    state: present
