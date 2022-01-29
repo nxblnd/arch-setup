@@ -13,6 +13,14 @@
     group: root
     validate: 'visudo -cf %s'
 
+- name: Disable sudo first use banner
+  copy:
+    src: privacy
+    dest: /etc/sudoers.d/privacy
+    mode: 0440
+    owner: root
+    group: root
+
 - name: Create user group
   group:
     name: '{{ username }}'
