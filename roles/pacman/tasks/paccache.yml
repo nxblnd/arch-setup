@@ -4,6 +4,12 @@
     name: pacman-contrib
     state: present
 
+- name: Create pacman hooks dir
+  file:
+    path: /etc/pacman.d/hooks
+    state: directory
+    mode: 0744
+
 - name: Copy paccache hook
   copy:
     src: paccache.hook
