@@ -14,7 +14,7 @@
 - name: Build yay
   command:
     chdir: /tmp/yay
-    cmd: 'makepkg --syncdeps'
+    cmd: 'makepkg --syncdeps --noconfirm'
     creates: 'yay-*.pkg.tar.zst'
   become_user: '{{ username }}'
 
