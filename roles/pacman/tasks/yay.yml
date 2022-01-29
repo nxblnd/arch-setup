@@ -15,7 +15,10 @@
   command:
     chdir: /tmp/yay
     cmd: 'makepkg --syncdeps --noconfirm'
-    creates: 'yay-*.pkg.tar.zst'
+    creates: yay-*.pkg.tar.zst
   become_user: '{{ username }}'
 
-#- name: Install yay
+- name: Install yay
+  pacman:
+    name: /tmp/yay/yay-*.pkg.tar.zst
+    state: present
