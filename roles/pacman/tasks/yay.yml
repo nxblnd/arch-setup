@@ -9,14 +9,13 @@
     repo: https://aur.archlinux.org/yay.git
     dest: /tmp/yay
     version: master
+  become_user: '{{ username }}'
 
 - name: Build yay
   command:
     chdir: /tmp/yay
     cmd: 'makepkg --syncdeps'
     creates: 'yay-*.pkg.tar.zst'
-  become_user: nobody
-  become_method: su
-  become_flags: '--shell /bin/sh'
+  become_user: '{{ username }}'
 
 #- name: Install yay
