@@ -1,4 +1,9 @@
 ---
+- name: Install GitHub python lib
+  pacman:
+    name: python-pygithub
+    state: present
+
 - name: Get latest yay tag from GitHub
   github_release:
     user: Jguer
