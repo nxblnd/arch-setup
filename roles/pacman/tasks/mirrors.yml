@@ -6,7 +6,6 @@
     executable: yay
   become_user: '{{ username }}'
 
-
 - name: Backup mirror list
   copy:
     src: /etc/pacman.d/mirrorlist
