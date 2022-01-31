@@ -1,9 +1,8 @@
 ---
 - name: Get latest yay tag from GitHub
-  github_release:
-    user: Jguer
-    repo: yay
-    action: latest_release
+  uri:
+    url: https://github.com/Jguer/yay/releases/latest
+    return_content: true
   register: yay_latest
 
 - name: Download latest yay
