@@ -7,6 +7,10 @@
     owner: root
     group: root
 
+- name: Update repository cache
+  pacman:
+    update_cache: true
+
 - include_tasks: paccache.yml
 # - include_tasks: yay.yml
 - include_tasks: mirrors.yml
