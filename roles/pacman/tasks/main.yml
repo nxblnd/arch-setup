@@ -13,4 +13,4 @@
 
 - include_tasks: paccache.yml
 # - include_tasks: yay.yml
-- include_tasks: mirrors.yml
+# - include_tasks: mirrors.yml
