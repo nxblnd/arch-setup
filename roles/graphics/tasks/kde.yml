@@ -1,5 +1,28 @@
 ---
 - name: Install KDE Plasma
   pacman:
-    name: plasma
+    name:
+      - plasma
+      - kde-gtk-config
+      - breeze-gtk
+      - kdeconnect
+      - sshfs
     state: present
+
+- name: Install UI fonts
+  pacman:
+    name:
+      - inter-font
+      - ttf-jetbrains-mono
+    state: present
+
+- name: Copy KDE configs
+  copy:
+    src: '{{ item }}'
+    dest: '/home/{{ username }}/.config/'
+    mode: 0600
+    owner: '{{ username }}'
+    group: '{{ username }}'
+  with_items:
+    - kdeglobals
+    - klaunchrc
