@@ -1,4 +1,9 @@
 ---
+- name: System upgrade
+  pacman:
+    update_cache: true
+    upgrade: true
+
 - include_tasks: user.yml
 - include_tasks: localization.yml
 - include_tasks: host.yml
