@@ -1,0 +1,12 @@
+---
+- name: Install KDE Plasma
+  pacman:
+    name: plasma
+    state: present
+
+- name: Install SDDM
+  pacman:
+    name:
+      - sddm
+      - sddm-kcm
+    state: present
