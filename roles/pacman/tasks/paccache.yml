@@ -10,18 +10,13 @@
     state: directory
     mode: 0744
 
-- name: Copy paccache hook
+- name: Copy paccache hooks
   copy:
-    src: paccache.hook
-    dest: /etc/pacman.d/hooks/paccache.hook
+    src: '{{ item }}'
+    dest: /etc/pacman.d/hooks/
     mode: 0644
     owner: root
     group: root
-
-- name: Copy paccache hook for deleted packages
-  copy:
-    src: paccache_deleted.hook
-    dest: /etc/pacman.d/hooks/paccache_deleted.hook
-    mode: 0644
-    owner: root
-    group: root
+  with_items:
+    - paccache.hook
+    - paccache_deleted.hook
