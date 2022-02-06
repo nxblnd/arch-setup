@@ -10,3 +10,8 @@
       - sddm
       - sddm-kcm
     state: present
+
+- name: Enable SDDM
+  systemd:
+    name: sddm
+    enabled: true
