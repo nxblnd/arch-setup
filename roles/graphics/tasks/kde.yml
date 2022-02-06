@@ -11,6 +11,20 @@
       - sddm-kcm
     state: present
 
+- name: Create SDDM config dir
+  file:
+    path: /etc/sddm.conf.d
+    state: directory
+    mode: 0744
+
+- name: Copy SDDM config
+  copy:
+    src: sddm.conf
+    dest: /etc/sddm.conf.d/sddm.conf
+    mode: 0644
+    owner: root
+    group: root
+
 - name: Enable SDDM
   systemd:
     name: sddm
