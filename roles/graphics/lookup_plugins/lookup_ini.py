@@ -1,3 +1,5 @@
+from __future__ import absolute_import, division, print_function
+
 DOCUMENTATION = """
   lookup: ini
   author: nxblnd
@@ -25,8 +27,6 @@ config:
       type: dict
 """
 
-from __future__ import absolute_import, division, print_function
-
 from ansible.errors import AnsibleError, AnsibleParserError
 from ansible.plugins.lookup import LookupBase
 from ansible.utils.display import Display
@@ -47,9 +47,9 @@ class LookupModule(LookupBase):
         # this is done so they work with the looping construct 'with_'.
         ret = []
         for term in terms:
-            display.debug(f"Reading from path {term}")
-
             lookupfile = self.find_file_in_search_path(variables, "files", term)
+            display.debug(f"Reading from file {lookupfile}")
+
             try:
                 if lookupfile:
                     config = ConfigParser()
