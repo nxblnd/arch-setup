@@ -16,13 +16,8 @@
       - ttf-jetbrains-mono
     state: present
 
-- name: Copy KDE configs
-  copy:
-    src: '{{ item }}'
-    dest: '/home/{{ username }}/.config/'
-    mode: 0600
-    owner: '{{ username }}'
-    group: '{{ username }}'
-  with_items:
-    - kdeglobals
-    - klaunchrc
+- name: Set configs
+  include_tasks: configs.yml
+  loop: "{{ query('filetree', '.config') }}"
+  loop_control:
+    loop_var: ini
