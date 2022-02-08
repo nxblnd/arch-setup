@@ -2,7 +2,7 @@
 # Taking inspiration from https://github.com/wshanks/ansible-fedora/blob/master/tasks/partial_ini.yml
 - name: 'Set {{ ini.path }} config'
   ini_file:
-    path: '/home/{{ username }}/{{ ini.path }}'
+    path: '/home/{{ username }}/.config/{{ ini.path }}'
     section: '{{ item.section }}'
     option: '{{ item.option }}'
     value: '{{ item.value }}'
