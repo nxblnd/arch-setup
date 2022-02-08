@@ -59,7 +59,7 @@ class LookupModule(LookupBase):
                     config.read(lookupfile)
                     ret = [{"section": section, "option": option, "value": value}
                         for section in config.sections()
-                        for item, value in config.items(section)
+                        for option, value in config.items(section)
                     ]
                 else:
                     raise AnsibleParserError()
