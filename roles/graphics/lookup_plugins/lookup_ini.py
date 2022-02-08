@@ -17,14 +17,14 @@ DOCUMENTATION = """
 """
 
 RETURN = """
-config:
-  description: List of parsed ini options
-  type: list
-  elements: dict
-  contains:
-    option:
-      description: Parsed section, option and value
-      type: dict
+  config:
+    description: List of parsed ini options
+    type: list
+    elements: dict
+    contains:
+      option:
+        description: Parsed section, option and value
+        type: dict
 """
 
 from ansible.errors import AnsibleError, AnsibleParserError
@@ -53,9 +53,7 @@ class LookupModule(LookupBase):
             try:
                 if lookupfile:
                     config = ConfigParser()
-                    config.optionxform = (
-                        str  # Do not convert keys and values to lowercase
-                    )
+                    config.optionxform = str  # Do not convert keys and values to lowercase
                     config.read(lookupfile)
                     ret = [{"section": section, "option": option, "value": value}
                         for section in config.sections()
