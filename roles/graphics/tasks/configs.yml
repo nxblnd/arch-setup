@@ -9,4 +9,4 @@
     mode: 0600
     owner: '{{ username }}'
     group: '{{ username }}'
-  loop: "{{ query('lookup_ini', ini.path) }}"
+  loop: "{{ query('lookup_ini', '.config/' + ini.path) }}"
