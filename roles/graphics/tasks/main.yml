@@ -1,3 +1,20 @@
 ---
 - include_tasks: sddm.yml
 - include_tasks: kde.yml
+
+- name: Install packages for consistent file dialog
+  pacman:
+    name:
+      - xdg-desktop-portal
+      - xdg-desktop-portal-kde
+    state: present
+
+- name: Set ENV variable for consistent file dialog
+  lineinfile:
+    path: /etc/environment
+    line: GTK_USE_PORTAL=1
+    state: present
+    create: yes
+    mode: 0600
+    owner: root
+    group: root
