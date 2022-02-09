@@ -5,8 +5,10 @@
       - plasma
       - kde-gtk-config
       - breeze-gtk
+      - kde-plasma-addons
       - kdeconnect
       - sshfs
+      - powerdevil
     state: present
 
 - name: Install UI fonts
