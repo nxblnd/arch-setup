@@ -5,7 +5,7 @@
       - plasma
       - kde-gtk-config
       - breeze-gtk
-      - kde-plasma-addons
+      - kdeplasma-addons
       - kdeconnect
       - sshfs
       - powerdevil
