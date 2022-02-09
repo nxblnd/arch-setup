@@ -16,8 +16,8 @@
       - ttf-jetbrains-mono
     state: present
 
-- name: Set configs
-  include_tasks: configs.yml
-  loop: "{{ query('filetree', '.config') }}"
-  loop_control:
-    loop_var: ini
+# - name: Set configs
+#   include_tasks: configs.yml
+#   loop: "{{ query('filetree', '.config') }}"
+#   loop_control:
+#     loop_var: ini
