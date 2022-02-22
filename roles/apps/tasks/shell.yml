@@ -16,7 +16,7 @@
 - name: Copy plugin list
   copy:
     src: fish_plugins
-    dest: '/home/{{ username }}/.config/fish'
+    dest: '/home/{{ username }}/.config/fish/'
     mode: 0644
     owner: '{{ username }}'
     group: '{{ username }}'
