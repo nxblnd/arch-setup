@@ -1,0 +1,28 @@
+---
+- name: Install Fish
+  pacman:
+    name: fish
+    state: present
+
+- name: Set fish as default shell
+  command:
+    cmd: 'chsh -s /usr/bin/fish {{ username }}'
+
+- name: Install fish plugin manager
+  pacman:
+    name: fisher
+    state: present
+
+- name: Copy plugin list
+  copy:
+    src: fish_plugins
+    dest: '/home/{{ username }}/.config/fish'
+    mode: 0644
+    owner: '{{ username }}'
+    group: '{{ username }}'
+
+- name: Install fish plugins
+  shell:
+    executable: /usr/bin/fish
+    cmd: fisher update
+  become_user: '{{ username }}'
