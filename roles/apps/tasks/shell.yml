@@ -7,6 +7,8 @@
 - name: Set fish as default shell
   command:
     cmd: 'chsh -s /usr/bin/fish {{ username }}'
+  register: result
+  changed_when: result.stdout.find('Shell changed.') != -1
 
 - name: Install fish plugin manager
   pacman:
@@ -22,7 +24,10 @@
     group: '{{ username }}'
 
 - name: Install fish plugins
-  shell:
-    executable: /usr/bin/fish
-    cmd: fisher update
+  command:
+    argv:
+      - /usr/bin/fish
+      - -c fisher update
+  register: result
+  changed_when: result.output | regex_search('Updated [0-9]+ plugin\/s') != -1
   become_user: '{{ username }}'
