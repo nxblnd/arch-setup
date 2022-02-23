@@ -14,7 +14,7 @@
     path: /etc/environment
     line: GTK_USE_PORTAL=1
     state: present
-    create: yes
+    create: true
     mode: 0600
     owner: root
     group: root
