@@ -10,7 +10,7 @@
     state: present
 
 - name: Set ENV variable for consistent file dialog
-  lineinfile:
+  ansible.builtin.lineinfile:
     path: /etc/environment
     line: GTK_USE_PORTAL=1
     state: present

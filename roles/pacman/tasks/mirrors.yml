@@ -7,7 +7,7 @@
   become_user: '{{ username }}'
 
 - name: Backup mirror list
-  copy:
+  ansible.builtin.copy:
     src: /etc/pacman.d/mirrorlist
     dest: /etc/pacman.d/mirrorlist.backup
     mode: 0644
@@ -15,6 +15,6 @@
     group: root
 
 - name: Run rate-mirrors
-  command:
+  ansible.builtin.command:
     cmd: 'rate-mirrors arch --save /etc/pacman.d/mirrorlist'
     creates: /etc/pacman.d/mirrorlist

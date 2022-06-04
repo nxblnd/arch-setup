@@ -1,6 +1,6 @@
 ---
 - name: Copy pacman config
-  copy:
+  ansible.builtin.copy:
     src: pacman.conf
     dest: /etc/pacman.conf
     mode: 0644

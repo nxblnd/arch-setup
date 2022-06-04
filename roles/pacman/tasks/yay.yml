@@ -12,9 +12,10 @@
   register: yay_latest
 
 - name: Download latest yay
-  get_url:
+  ansible.builtin.get_url:
     url: 'https://github.com/Jguer/yay/releases/download/{{ yay_latest }}/yay_{{ yay_latest[1:] }}_x86_64.tar.gz'
     dest: /tmp/yay.tar.gz
+    mode: 0644
 
 - name: Install yay
   pacman:

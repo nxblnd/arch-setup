@@ -5,7 +5,7 @@
     state: present
 
 - name: Copy sudoers file
-  copy:
+  ansible.builtin.copy:
     src: sudoers
     dest: /etc/sudoers
     mode: 0440
@@ -14,7 +14,7 @@
     validate: 'visudo -cf %s'
 
 - name: Disable sudo first use banner
-  copy:
+  ansible.builtin.copy:
     src: privacy
     dest: /etc/sudoers.d/privacy
     mode: 0440
@@ -22,12 +22,12 @@
     group: root
 
 - name: Create user group
-  group:
+  ansible.builtin.group:
     name: '{{ username }}'
     state: present
 
 - name: Create user
-  user:
+  ansible.builtin.user:
     name: '{{ username }}'
     comment: '{{ fullname }}'
     password: '{{ password }}'

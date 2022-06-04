@@ -5,7 +5,7 @@
     state: present
 
 - name: Set fish as default shell
-  command:
+  ansible.builtin.command:
     cmd: 'chsh -s /usr/bin/fish {{ username }}'
   register: result
   changed_when: result.stdout.find('Shell changed.') != -1
@@ -16,7 +16,7 @@
     state: present
 
 - name: Copy plugin list
-  copy:
+  ansible.builtin.copy:
     src: fish_plugins
     dest: '/home/{{ username }}/.config/fish/'
     mode: 0644
@@ -24,7 +24,7 @@
     group: '{{ username }}'
 
 - name: Install fish plugins
-  command:
+  ansible.builtin.command:
     argv:
       - /usr/bin/fish
       - -c fisher update

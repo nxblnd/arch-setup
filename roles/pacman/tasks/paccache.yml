@@ -5,7 +5,7 @@
     state: present
 
 - name: Copy paccache hooks
-  copy:
+  ansible.builtin.copy:
     src: '{{ item }}'
     dest: /etc/pacman.d/hooks/
     mode: 0644
