@@ -31,3 +31,8 @@
   register: result
   changed_when: result.output | regex_search('Updated [0-9]+ plugin\/s') != -1
   become_user: '{{ username }}'
+
+- name: Set variables
+  ansible.builtin.script:
+    cmd: tide_variables.fish
+    executable: /usr/bin/fish

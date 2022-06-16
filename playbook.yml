@@ -20,5 +20,5 @@
     - core
     - pacman
     - ntp
-    - graphics
+    # - graphics
     - apps
