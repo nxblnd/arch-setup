@@ -17,7 +17,8 @@
       prompt: What is this machine hostname?
       private: false
   roles:
-    - core
+    - role: core
+      tags: always
     - pacman
     - ntp
     # - graphics

@@ -1,38 +1,41 @@
 ---
-- name: Install Fish
-  pacman:
-    name: fish
-    state: present
+- name: Install and setup Fish shell
+  tags: fish
+  block:
+  - name: Install Fish
+    pacman:
+      name: fish
+      state: present
 
-- name: Set fish as default shell
-  ansible.builtin.command:
-    cmd: 'chsh -s /usr/bin/fish {{ username }}'
-  register: result
-  changed_when: result.stdout.find('Shell changed.') != -1
+  - name: Set fish as default shell
+    ansible.builtin.command:
+      cmd: 'chsh -s /usr/bin/fish {{ username }}'
+    register: result
+    changed_when: result.stdout.find('Shell changed.') != -1
 
-- name: Install fish plugin manager
-  pacman:
-    name: fisher
-    state: present
+  - name: Install fish plugin manager
+    pacman:
+      name: fisher
+      state: present
 
-- name: Copy plugin list
-  ansible.builtin.copy:
-    src: fish_plugins
-    dest: '/home/{{ username }}/.config/fish/'
-    mode: 0644
-    owner: '{{ username }}'
-    group: '{{ username }}'
+  - name: Copy plugin list
+    ansible.builtin.copy:
+      src: fish_plugins
+      dest: '/home/{{ username }}/.config/fish/'
+      mode: 0644
+      owner: '{{ username }}'
+      group: '{{ username }}'
 
-- name: Install fish plugins
-  ansible.builtin.command:
-    argv:
-      - /usr/bin/fish
-      - -c fisher update
-  register: result
-  changed_when: result.output | regex_search('Updated [0-9]+ plugin\/s') != -1
-  become_user: '{{ username }}'
+  - name: Install fish plugins
+    ansible.builtin.command:
+      argv:
+        - /usr/bin/fish
+        - -c fisher update
+    register: result
+    changed_when: result.output | regex_search('Updated [0-9]+ plugin\/s') != -1
+    become_user: '{{ username }}'
 
-- name: Set variables
-  ansible.builtin.script:
-    cmd: tide_variables.fish
-    executable: /usr/bin/fish
+  - name: Set variables
+    ansible.builtin.script:
+      cmd: tide_variables.fish
+      executable: /usr/bin/fish
