@@ -39,3 +39,4 @@
     ansible.builtin.script:
       cmd: tide_variables.fish
       executable: /usr/bin/fish
+    become_user: '{{ username }}'

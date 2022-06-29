@@ -3,6 +3,7 @@
   pacman:
     update_cache: true
     upgrade: true
+    tags: always
 
 - include_tasks: user.yml
 - include_tasks: localization.yml
