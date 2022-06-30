@@ -1,42 +1,39 @@
 ---
-- name: Install GitHub python lib
-  community.general.pacman:
-    name: python-pygithub
-    state: present
+- name: Install yay AUR helper
+  tags: ['aur']
+  block:
+    - name: Get latest yay tag from GitHub
+      ansible.builtin.uri:
+        url: 'https://api.github.com/repos/Jguer/yay/releases/latest'
+        return_content: true
+      register: yay_latest
 
-- name: Get latest yay tag from GitHub
-  github_release:
-    user: Jguer
-    repo: yay
-    action: latest_release
-  register: yay_latest
+    - name: Download latest yay
+      ansible.builtin.get_url:
+        url: 'https://github.com/Jguer/yay/releases/download/{{ yay_latest.json.json.tag_name }}/yay_{{ yay_latest.json.json.tag_name[1:] }}_x86_64.tar.gz'
+        dest: /tmp/yay.tar.gz
+        mode: 0644
 
-- name: Download latest yay
-  ansible.builtin.get_url:
-    url: 'https://github.com/Jguer/yay/releases/download/{{ yay_latest }}/yay_{{ yay_latest[1:] }}_x86_64.tar.gz'
-    dest: /tmp/yay.tar.gz
-    mode: 0644
+    - name: Install yay
+      community.general.pacman:
+        name: /tmp/yay.tar.gz
+        state: present
 
-- name: Install yay
-  community.general.pacman:
-    name: /tmp/yay.tar.gz
-    state: present
+    # - name: Install base-devel group
+    #   community.general.pacman:
+    #     name: base-devel
+    #     state: present
 
-# - name: Install base-devel group
-#   community.general.pacman:
-#     name: base-devel
-#     state: present
+    # - name: Clone AUR yay repo
+    #   git:
+    #     repo: https://aur.archlinux.org/yay.git
+    #     dest: /tmp/yay
+    #     version: master
+    #   become_user: '{{ username }}'
 
-# - name: Clone AUR yay repo
-#   git:
-#     repo: https://aur.archlinux.org/yay.git
-#     dest: /tmp/yay
-#     version: master
-#   become_user: '{{ username }}'
-
-# - name: Build and install yay
-#   command:
-#     chdir: /tmp/yay
-#     cmd: 'makepkg --syncdeps --install --noconfirm'
-#     creates: yay-*.pkg.tar.zst
-#   become_user: '{{ username }}'
+    # - name: Build and install yay
+    #   command:
+    #     chdir: /tmp/yay
+    #     cmd: 'makepkg --syncdeps --install --noconfirm'
+    #     creates: yay-*.pkg.tar.zst
+    #   become_user: '{{ username }}'
