@@ -1,64 +1,80 @@
 ---
-- name: Install Networking apps
-  pacman:
-    name:
-      - discord
-      - elinks
-      - firefox
-      # - openssh
-      - telegram-desktop
-      # - thunderbird
-      # - transmission-qt
-      # - shadowsocks-libev
-      - youtube-dl
-    state: present
+- name: Install CLI programms
+  tags: ['apps', 'cli']
+  block:
+    - name: Install Networking apps
+      pacman:
+        name:
+          - elinks
+          - openssh
+          - shadowsocks-libev
+          - youtube-dl
+        state: present
 
-- name: Install Multimedia apps
-  pacman:
-    name:
-      - gimp
-      - gwenview
-      - inkscape
-      - kcolorchooser
-      - kdenlive
-      - kruler
-      # - obs-studio
-      - simplescreenrecorder
-      - spectacle
-      # - spotify
-      - vlc
-    state: present
+    - name: Install Utilites
+      pacman:
+        name:
+          - htop
+          - neofetch
+        state: present
 
-- name: Install Utilites
-  pacman:
-    name:
-      - ark
-      - bluedevil
-      - bluez-utils
-      # - cups
-      - dolphin
-      - filelight
-      - htop
-      - konsole
-      - keepassxc
-      - neofetch
-      - okteta
-      - partitionmanager
-      - speedcrunch
-      # - tapper
-    state: present
+- name: Install GUI programms
+  tags: ['apps', 'gui']
+  block:
+    - name: Install Networking apps
+      pacman:
+        name:
+          - discord
+          - firefox
+          - telegram-desktop
+          # - thunderbird
+          # - transmission-qt
+        state: present
 
-- name: Install apps for Documents
-  pacman:
-    name:
-      - asciidoctor
-      - calibre
-      # - jpdftweak
-      - kate
-      - libreoffice-still
-      - okular
-      # - nvim
-      - texlive-langcyrillic
-      - texlive-most
-      - texstudio
-    state: present
+    - name: Install Multimedia apps
+      pacman:
+        name:
+          - gimp
+          - gwenview
+          - inkscape
+          - kcolorchooser
+          - kdenlive
+          - kruler
+          # - obs-studio
+          - simplescreenrecorder
+          - spectacle
+          # - spotify
+          - vlc
+        state: present
+
+    - name: Install Utilites
+      pacman:
+        name:
+          - ark
+          - bluedevil
+          - bluez-utils
+          # - cups
+          - dolphin
+          - filelight
+          - konsole
+          - keepassxc
+          - okteta
+          - partitionmanager
+          - speedcrunch
+          # - tapper
+        state: present
+
+    - name: Install apps for Documents
+      pacman:
+        name:
+          - asciidoctor
+          - calibre
+          # - jpdftweak
+          - kate
+          - libreoffice-still
+          - okular
+          # - nvim
+          - texlive-langcyrillic
+          - texlive-most
+          - texstudio
+        state: present

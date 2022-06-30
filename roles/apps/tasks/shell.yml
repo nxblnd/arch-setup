@@ -1,6 +1,6 @@
 ---
 - name: Install and setup Fish shell
-  tags: fish
+  tags: ['fish']
   block:
   - name: Install Fish
     pacman:

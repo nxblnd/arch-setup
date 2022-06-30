@@ -1,4 +1,5 @@
 ---
-# - include_tasks: apps.yml
+- include_tasks: apps.yml
+  tags: ['apps', 'cli', 'gui']
 - include_tasks: shell.yml
-  tags: fish
+  tags: ['fish']
