@@ -1,0 +1,60 @@
+---
+- name: Install compilers/intepreters and necessary instuments
+  tags: ['development']
+  block:
+    - name: Install Python tools
+      tags: ['python']
+      pacman:
+        name:
+          - python
+          - python-poetry
+          - ipython
+        state: present
+
+    - name: Install C/C++ tools
+      tags: ['c', 'c++']
+      pacman:
+        name:
+          - gcc
+          - gdb
+          - make
+          - cmake
+        state: present
+
+    - name: Install JavaScript
+      tags: ['js']
+      pacman:
+        name:
+          - npm
+          - nodejs
+          - firefox
+          - chromium
+        state: present
+
+    - name: Install Java
+      pacman:
+        name:
+          - jre-openjdk
+          - maven
+        state: present
+
+- name: Install IDEs
+  tags: ['development']
+  block:
+    - name: Install PyCharm
+      tags: ['python']
+      pacman:
+        name: pycharm-community-edition
+        state: present
+
+    - name: Install VS Code
+      tags: ['c', 'c++', 'js']
+      pacman:
+        name: code
+        state: present
+
+    - name: Install Intellij IDEA
+      tags: ['java']
+      pacman:
+        name: intellij-idea-community-edition
+        state: present
