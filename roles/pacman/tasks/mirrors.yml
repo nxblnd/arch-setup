@@ -2,12 +2,16 @@
 - name: Setup mirror list
   tags: ['mirrors']
   block:
-    - name: Install rate-mirrors
-      community.general.pacman:
-        name: rate-mirrors
-        state: present
-        executable: yay
-      become_user: '{{ username }}'
+    - name: Install rate-mirrors  # TODO: find a way to use yay in more sane way
+      ansible.builtin.command:
+        cmd: 'yay -S rate-mirrors --noconfirm'
+      register: rate_mirrors_install
+      changed_when: rate_mirrors_install.stdout != "0"
+    # - name: Install rate-mirrors
+    #   community.general.pacman:
+    #     name: rate-mirrors
+    #     state: present
+    #     executable: yay
 
     - name: Backup mirror list
       ansible.builtin.copy:
