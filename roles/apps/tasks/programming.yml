@@ -1,6 +1,6 @@
 ---
 - name: Install compilers/intepreters and necessary instuments
-  tags: ['development']
+  tags: ['development', 'cli']
   block:
     - name: Install Python tools
       tags: ['python']
@@ -27,8 +27,6 @@
         name:
           - npm
           - nodejs
-          - firefox
-          - chromium
         state: present
 
     - name: Install Java
@@ -57,4 +55,15 @@
       tags: ['java']
       pacman:
         name: intellij-idea-community-edition
+        state: present
+
+- name: Install additional GUI tools
+  tags: ['development', 'gui']
+  block:
+    - name: Install browsers
+      tags: ['js']
+      pacman:
+        name:
+          - firefox
+          - chromium
         state: present
