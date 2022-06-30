@@ -13,6 +13,8 @@
 
 - include_tasks: paccache.yml
 - include_tasks: yay.yml
+  tags: ['yay']
   when: setup_aur is defined and setup_aur
 - include_tasks: mirrors.yml
+  tags: ['mirrors']
   when: setup_aur is defined and setup_aur

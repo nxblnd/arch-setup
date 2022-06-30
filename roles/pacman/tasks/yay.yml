@@ -1,5 +1,6 @@
 ---
 - name: Install yay AUR helper
+  tags: ['yay']
   block:
     - name: Install base-devel package group
       pacman:
