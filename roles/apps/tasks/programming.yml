@@ -57,6 +57,16 @@
         name: intellij-idea-community-edition
         state: present
 
+- name: Install additional CLI tools
+  tags: ['development', 'cli']
+  block:
+    - name: Install Docker
+      community.general.pacman:
+        name:
+          - docker
+          - docker-compose
+        state: present
+
 - name: Install additional GUI tools
   tags: ['development', 'gui']
   block:
