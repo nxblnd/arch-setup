@@ -1,36 +1,39 @@
 ---
-- name: Install sudo
-  pacman:
-    name: sudo
-    state: present
+- name: Setup user profile
+  tags: ['user']
+  block:
+    - name: Install sudo
+      pacman:
+        name: sudo
+        state: present
 
-- name: Copy sudoers file
-  ansible.builtin.copy:
-    src: sudoers
-    dest: /etc/sudoers
-    mode: 0440
-    owner: root
-    group: root
-    validate: 'visudo -cf %s'
+    - name: Copy sudoers file
+      ansible.builtin.copy:
+        src: sudoers
+        dest: /etc/sudoers
+        mode: 0440
+        owner: root
+        group: root
+        validate: 'visudo -cf %s'
 
-- name: Disable sudo first use banner
-  ansible.builtin.copy:
-    src: privacy
-    dest: /etc/sudoers.d/privacy
-    mode: 0440
-    owner: root
-    group: root
+    - name: Disable sudo first use banner
+      ansible.builtin.copy:
+        src: privacy
+        dest: /etc/sudoers.d/privacy
+        mode: 0440
+        owner: root
+        group: root
 
-- name: Create user group
-  ansible.builtin.group:
-    name: '{{ username }}'
-    state: present
+    - name: Create user group
+      ansible.builtin.group:
+        name: '{{ username }}'
+        state: present
 
-- name: Create user
-  ansible.builtin.user:
-    name: '{{ username }}'
-    comment: '{{ fullname }}'
-    password: '{{ password }}'
-    groups: wheel, audio, disk, input, storage
-    append: true
-    create_home: true
+    - name: Create user
+      ansible.builtin.user:
+        name: '{{ username }}'
+        comment: '{{ fullname }}'
+        password: '{{ password }}'
+        groups: wheel, audio, disk, input, storage
+        append: true
+        create_home: true

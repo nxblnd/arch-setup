@@ -1,10 +1,13 @@
 ---
 - name: System upgrade
+  tags: ['always']
   pacman:
     update_cache: true
     upgrade: true
-    tags: always
 
 - include_tasks: user.yml
+  tags: ['user']
 - include_tasks: localization.yml
+  tags: ['localization']
 - include_tasks: host.yml
+  tags: ['host']
