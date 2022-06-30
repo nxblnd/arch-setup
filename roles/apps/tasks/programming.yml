@@ -21,7 +21,7 @@
           - cmake
         state: present
 
-    - name: Install JavaScript
+    - name: Install JavaScript tools
       tags: ['js']
       pacman:
         name:
@@ -29,7 +29,7 @@
           - nodejs
         state: present
 
-    - name: Install Java
+    - name: Install Java tools
       pacman:
         name:
           - jre-openjdk
