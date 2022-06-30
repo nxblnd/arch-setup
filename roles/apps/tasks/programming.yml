@@ -12,7 +12,7 @@
         state: present
 
     - name: Install C/C++ tools
-      tags: ['c', 'c++']
+      tags: ['c', 'cpp']
       pacman:
         name:
           - gcc
@@ -46,7 +46,7 @@
         state: present
 
     - name: Install VS Code
-      tags: ['c', 'c++', 'js']
+      tags: ['c', 'cpp', 'js']
       pacman:
         name: code
         state: present

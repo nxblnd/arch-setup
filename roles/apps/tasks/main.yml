@@ -4,4 +4,4 @@
 - include_tasks: shell.yml
   tags: ['fish']
 - include_tasks: programming.yml
-  tags: ['programming', 'python', 'c', 'c++', 'js', 'java', 'cli', 'gui']
+  tags: ['programming', 'python', 'c', 'cpp', 'js', 'java', 'cli', 'gui']
