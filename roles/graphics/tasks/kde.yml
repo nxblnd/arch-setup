@@ -1,6 +1,6 @@
 ---
 - name: Install KDE Plasma
-  pacman:
+  community.general.pacman:
     name:
       - plasma
       - kde-gtk-config
@@ -12,7 +12,7 @@
     state: present
 
 - name: Install UI fonts
-  pacman:
+  community.general.pacman:
     name:
       - inter-font
       - ttf-jetbrains-mono

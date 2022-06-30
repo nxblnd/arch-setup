@@ -1,6 +1,6 @@
 ---
 - name: Install GitHub python lib
-  pacman:
+  community.general.pacman:
     name: python-pygithub
     state: present
 
@@ -18,12 +18,12 @@
     mode: 0644
 
 - name: Install yay
-  pacman:
+  community.general.pacman:
     name: /tmp/yay.tar.gz
     state: present
 
 # - name: Install base-devel group
-#   pacman:
+#   community.general.pacman:
 #     name: base-devel
 #     state: present
 

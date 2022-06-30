@@ -3,7 +3,7 @@
   tags: ['fish']
   block:
   - name: Install Fish
-    pacman:
+    community.general.pacman:
       name: fish
       state: present
 
@@ -14,7 +14,7 @@
     changed_when: result.stdout.find('Shell changed.') != -1
 
   - name: Install fish plugin manager
-    pacman:
+    community.general.pacman:
       name: fisher
       state: present
 

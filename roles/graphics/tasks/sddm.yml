@@ -1,6 +1,6 @@
 ---
 - name: Install SDDM
-  pacman:
+  community.general.pacman:
     name:
       - sddm
       - sddm-kcm

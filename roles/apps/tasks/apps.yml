@@ -3,7 +3,7 @@
   tags: ['apps', 'cli']
   block:
     - name: Install Networking apps
-      pacman:
+      community.general.pacman:
         name:
           - elinks
           - openssh
@@ -12,7 +12,7 @@
         state: present
 
     - name: Install Utilites
-      pacman:
+      community.general.pacman:
         name:
           - htop
           - neofetch
@@ -22,7 +22,7 @@
   tags: ['apps', 'gui']
   block:
     - name: Install Networking apps
-      pacman:
+      community.general.pacman:
         name:
           - discord
           - firefox
@@ -32,7 +32,7 @@
         state: present
 
     - name: Install Multimedia apps
-      pacman:
+      community.general.pacman:
         name:
           - gimp
           - gwenview
@@ -48,7 +48,7 @@
         state: present
 
     - name: Install Utilites
-      pacman:
+      community.general.pacman:
         name:
           - ark
           - bluedevil
@@ -65,7 +65,7 @@
         state: present
 
     - name: Install apps for Documents
-      pacman:
+      community.general.pacman:
         name:
           - asciidoctor
           - calibre

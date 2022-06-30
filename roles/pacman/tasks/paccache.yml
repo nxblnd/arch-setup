@@ -1,6 +1,6 @@
 ---
 - name: Install pacman-contrib
-  pacman:
+  community.general.pacman:
     name: pacman-contrib
     state: present
 

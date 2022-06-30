@@ -4,7 +4,7 @@
   block:
     - name: Install Python tools
       tags: ['python']
-      pacman:
+      community.general.pacman:
         name:
           - python
           - python-poetry
@@ -13,7 +13,7 @@
 
     - name: Install C/C++ tools
       tags: ['c', 'cpp']
-      pacman:
+      community.general.pacman:
         name:
           - gcc
           - gdb
@@ -23,14 +23,14 @@
 
     - name: Install JavaScript tools
       tags: ['js']
-      pacman:
+      community.general.pacman:
         name:
           - npm
           - nodejs
         state: present
 
     - name: Install Java tools
-      pacman:
+      community.general.pacman:
         name:
           - jre-openjdk
           - maven
@@ -41,19 +41,19 @@
   block:
     - name: Install PyCharm
       tags: ['python']
-      pacman:
+      community.general.pacman:
         name: pycharm-community-edition
         state: present
 
     - name: Install VS Code
       tags: ['c', 'cpp', 'js']
-      pacman:
+      community.general.pacman:
         name: code
         state: present
 
     - name: Install Intellij IDEA
       tags: ['java']
-      pacman:
+      community.general.pacman:
         name: intellij-idea-community-edition
         state: present
 
@@ -62,7 +62,7 @@
   block:
     - name: Install browsers
       tags: ['js']
-      pacman:
+      community.general.pacman:
         name:
           - firefox
           - chromium

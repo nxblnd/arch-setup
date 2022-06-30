@@ -1,6 +1,6 @@
 ---
 - name: Install rate-mirrors
-  pacman:
+  community.general.pacman:
     name: rate-mirrors
     state: present
     executable: yay

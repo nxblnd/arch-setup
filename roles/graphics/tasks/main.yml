@@ -3,7 +3,7 @@
 - include_tasks: kde.yml
 
 - name: Install packages for consistent file dialog
-  pacman:
+  community.general.pacman:
     name:
       - xdg-desktop-portal
       - xdg-desktop-portal-kde
