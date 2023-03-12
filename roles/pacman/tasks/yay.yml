@@ -3,7 +3,7 @@
   tags: ['yay']
   block:
     - name: Install base-devel package group
-      pacman:
+      community.general.pacman:
         name: base-devel
         state: present
 
@@ -17,9 +17,9 @@
       ansible.builtin.unarchive:
         remote_src: true
         src: "https://github.com/Jguer/yay/releases/download/{{ yay_latest.json.tag_name }}\
-          /yay_{{ yay_latest.json.tag_name | regex_replace('^v','') }}_x86_64.tar.gz"
+          /yay_{{ yay_latest.json.tag_name | regex_replace('^v', '') }}_x86_64.tar.gz"
         dest: /tmp
-        mode: 0744
+        mode: '0744'
         keep_newer: true
         extra_opts:
           - --no-anchored
@@ -27,7 +27,7 @@
 
     - name: Install yay
       ansible.builtin.command:
-        chdir: "/tmp/yay_{{ yay_latest.json.tag_name | regex_replace('^v','') }}_x86_64"
+        chdir: "/tmp/yay_{{ yay_latest.json.tag_name | regex_replace('^v', '') }}_x86_64"
         cmd: "./yay -S yay --noconfirm"
       register: yay_result
       changed_when: yay_result.stdout != "0"

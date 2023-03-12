@@ -5,9 +5,12 @@
     update_cache: true
     upgrade: true
 
-- include_tasks: user.yml
+- name: Setup user account
   tags: ['user']
-- include_tasks: localization.yml
+  ansible.builtin.include_tasks: user.yml
+- name: Setup localization
   tags: ['localization']
-- include_tasks: host.yml
+  ansible.builtin.include_tasks: localization.yml
+- name: Setup localhost
   tags: ['host']
+  ansible.builtin.include_tasks: host.yml

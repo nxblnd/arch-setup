@@ -1,7 +1,10 @@
 ---
-- include_tasks: apps.yml
+- name: Install apps
   tags: ['apps', 'cli', 'gui']
-- include_tasks: shell.yml
+  ansible.builtin.include_tasks: apps.yml
+- name: Install Fish shell
   tags: ['fish']
-- include_tasks: programming.yml
+  ansible.builtin.include_tasks: shell.yml
+- name: Install everything for programming
   tags: ['programming', 'python', 'c', 'cpp', 'js', 'java', 'cli', 'gui']
+  ansible.builtin.include_tasks: programming.yml

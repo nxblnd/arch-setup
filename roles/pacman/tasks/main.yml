@@ -3,7 +3,7 @@
   ansible.builtin.copy:
     src: pacman.conf
     dest: /etc/pacman.conf
-    mode: 0644
+    mode: '0644'
     owner: root
     group: root
 
@@ -11,10 +11,13 @@
   community.general.pacman:
     update_cache: true
 
-- include_tasks: paccache.yml
-- include_tasks: yay.yml
+- name: Setup paccache tool
+  ansible.builtin.include_tasks: paccache.yml
+- name: Setup AUR helper
   tags: ['yay']
+  ansible.builtin.include_tasks: yay.yml
   when: setup_aur is defined and setup_aur
-- include_tasks: mirrors.yml
+- name: Setup repo mirrors
   tags: ['mirrors']
+  ansible.builtin.include_tasks: mirrors.yml
   when: setup_aur is defined and setup_aur

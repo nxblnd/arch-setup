@@ -10,13 +10,13 @@
   ansible.builtin.file:
     path: /etc/sddm.conf.d
     state: directory
-    mode: 0744
+    mode: '0744'
 
 - name: Copy SDDM config
   ansible.builtin.copy:
     src: sddm.conf
     dest: /etc/sddm.conf.d/sddm.conf
-    mode: 0644
+    mode: '0644'
     owner: root
     group: root
 

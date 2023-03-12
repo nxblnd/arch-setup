@@ -11,7 +11,7 @@
       ansible.builtin.copy:
         src: sudoers
         dest: /etc/sudoers
-        mode: 0440
+        mode: '0440'
         owner: root
         group: root
         validate: 'visudo -cf %s'
@@ -20,7 +20,7 @@
       ansible.builtin.copy:
         src: privacy
         dest: /etc/sudoers.d/privacy
-        mode: 0440
+        mode: '0440'
         owner: root
         group: root
 

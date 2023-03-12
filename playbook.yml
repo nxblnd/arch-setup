@@ -1,5 +1,6 @@
 ---
-- hosts: localhost
+- name: Arch setup playbook
+  hosts: localhost
   become: true
   vars_prompt:
     - name: fullname

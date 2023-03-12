@@ -17,7 +17,7 @@
       ansible.builtin.copy:
         src: /etc/pacman.d/mirrorlist
         dest: /etc/pacman.d/mirrorlist.backup
-        mode: 0644
+        mode: '0644'
         owner: root
         group: root
 

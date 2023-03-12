@@ -1,6 +1,8 @@
 ---
-- include_tasks: sddm.yml
-- include_tasks: kde.yml
+- name: Setup Display Manager
+  ansible.builtin.include_tasks: sddm.yml
+- name: Setup Desktop Environment
+  ansible.builtin.include_tasks: kde.yml
 
 - name: Install packages for consistent file dialog
   community.general.pacman:
@@ -15,6 +17,6 @@
     line: GTK_USE_PORTAL=1
     state: present
     create: true
-    mode: 0600
+    mode: '0600'
     owner: root
     group: root
