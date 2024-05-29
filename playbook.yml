@@ -1,25 +1,11 @@
 ---
 - name: Arch setup playbook
   hosts: localhost
-  become: true
-  vars_prompt:
-    - name: fullname
-      prompt: What is your name?
-      private: false
-    - name: username
-      prompt: What is your username?
-      private: false
-    - name: password
-      prompt: What is your password?
-      private: true
-      confirm: true
-      encrypt: sha512_crypt
-    - name: hostname
-      prompt: What is this machine hostname?
-      private: false
   roles:
-    - core
-    - pacman
-    - ntp
-    # - graphics
-    - apps
+    - role: fish
+      tags: ['fish']
+    #  - core
+    # - pacman
+    # - ntp
+  # - graphics
+    # - apps

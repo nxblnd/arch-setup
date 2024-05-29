@@ -1,0 +1,67 @@
+---
+- name: Install fish
+  community.general.pacman:
+    name: fish
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install Fish
+  ansible.builtin.apt:
+    name: fish
+    state: present
+  when: ansible_distribution == 'Debian' or
+    ansible_distribution == 'Ubuntu'
+
+- name: Set fish as default shell
+  ansible.builtin.user:
+    name: '{{ username }}'
+    shell: /usr/bin/fish
+
+- name: Install fish plugin manager dependencies
+  community.general.pacman:
+    name:
+      - curl
+      - git
+    state: present
+  when: ansible_distribution == 'Archlinux'
+
+- name: Install fish plugin manager dependencies
+  ansible.builtin.apt:
+    name:
+      - curl
+      - git
+    state: present
+  when: ansible_distribution == 'Debian' or
+    ansible_distribution == 'Ubuntu'
+
+- name: Install fish plugin manager
+  ansible.builtin.script: files/fisher.fish
+  args:
+    executable: fish
+  become: true
+  become_user: '{{ username }}'
+
+- name: Copy plugin list
+  ansible.builtin.copy:
+    src: fish_plugins
+    dest: '/home/{{ username }}/.config/fish/'
+    mode: '0644'
+    owner: '{{ username }}'
+    group: '{{ username }}'
+
+- name: Install fish plugins
+  ansible.builtin.command:
+    argv:
+      - /usr/bin/fish
+      - -c fisher update
+  register: plugin_result
+  changed_when: plugin_result.stdout_lines | regex_search('Updated [0-9]+ plugin\/s') != -1
+  become: true
+  become_user: '{{ username }}'
+
+- name: Set variables
+  ansible.builtin.script: files/env.fish
+  args:
+    executable: fish
+  become: true
+  become_user: '{{ username }}'
