@@ -1,0 +1,11 @@
+[Unit]
+Description=Fetch fresh packages in background
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+RandomizedDelaySec=10m
+WakeSystem=false
+
+[Install]
+WantedBy=timers.target

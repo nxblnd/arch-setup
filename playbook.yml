@@ -5,7 +5,8 @@
     - role: fish
       tags: ['fish']
     #  - core
-    # - pacman
+    - role: pacman
+      tags: ['pacman']
     # - ntp
   # - graphics
     # - apps

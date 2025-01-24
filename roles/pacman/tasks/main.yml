@@ -11,6 +11,31 @@
   community.general.pacman:
     update_cache: true
 
+- name: Copy pacman-bg conf
+  ansible.builtin.copy:
+    src: pacman-bg.conf
+    dest: /etc/pacman-bg.conf
+    mode: '0644'
+    owner: root
+    group: root
+
+- name: Copy systemd timer and service for background downloads
+  ansible.builtin.copy:
+    src: '{{ item }}'
+    dest: /etc/systemd/system/
+    mode: '0644'
+    owner: root
+    group: root
+  loop:
+    - pacman-bg.timer
+    - pacman-bg.service
+
+- name: Enable pacman-bg timer
+  ansible.builtin.systemd:
+    name: pacman-bg.timer
+    enabled: true
+    state: started
+
 - name: Setup paccache tool
   ansible.builtin.include_tasks: paccache.yml
 - name: Setup AUR helper
