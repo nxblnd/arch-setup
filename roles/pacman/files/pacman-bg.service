@@ -3,3 +3,4 @@ Description=Fetch fresh packages in background
 
 [Service]
 ExecStart=pacman -Suyw --noconfirm --config /etc/pacman-bg.conf
+Restart=on-failure
